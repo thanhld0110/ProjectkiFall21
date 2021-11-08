@@ -63,7 +63,7 @@ public class LoadController extends HttpServlet {
             throws ServletException, IOException {
         AppartmentDBContext db = new AppartmentDBContext();
         LocaDBContext db1 = new LocaDBContext();
-        ArrayList<Apartment> apart= db.getAppartment();
+        ArrayList<Apartment> apart= db.getAppartmentt();
         ArrayList<Location> lcat = db1.getLocation();
         request.setAttribute("apart", apart);
         request.setAttribute("lcat", lcat);

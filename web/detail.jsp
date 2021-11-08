@@ -52,7 +52,7 @@
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                             <i class="fa fa-bars"></i>
                         </button>
-                        <a class="navbar-brand" href="index.jsp"><img src="images/logo.png" class="logo" alt=""></a>
+                        <a class="navbar-brand" href="index.jsp"><img src="images/logo2.png" class="logo" alt=""></a>
                     </div>
                     <!-- End Header Navigation -->
 
@@ -60,20 +60,27 @@
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                             <li class="nav-item"><a class="nav-link" href="HomeController">Home</a></li>
+                            
                             <li class="nav-item"><a class="nav-link" href="LoadController">Apartment</a></li>
-                            <li class="dropdown active">
-                                <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="shop.jsp">Sidebar Shop</a></li>
-                                    <li><a href="shop-detail.jsp">Shop Detail</a></li>
-                                    <li><a href="cart.jsp">Cart</a></li>
-                                    <li><a href="checkout.jsp">Checkout</a></li>
-                                    <li><a href="my-account.jsp">My Account</a></li>
-                                    <li><a href="wishlist.jsp">Wishlist</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="pagger.jsp">Gallery</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Contact Us</a></li>
+                            
+                            
+
+                            <c:if test="${sessionScope.account.host==1}">
+                                <li class="dropdown active">
+                                    <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Manage</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="manage">Manage Apartment</a></li>
+                                        <li><a href="manageAdmin">Manage Account</a></li>
+
+                                    </ul> 
+                                </li>
+                            </c:if>
+                            <c:if test="${sessionScope.account==null}">
+                                <li class="nav-item"><a class="nav-link" href="login.jsp">Login</a></li>
+                                </c:if>
+                                <c:if test="${sessionScope.account != null}">
+                                <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+                                </c:if>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
@@ -81,43 +88,18 @@
                     <!-- Start Atribute Navigation -->
                     <div class="attr-nav">
                         <ul>
-                            <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+
                             <li class="side-menu"><a href="#">
                                     <i class="fa fa-shopping-bag"></i>
-                                    <span class="badge">3</span>
-                                    <p>My Cart</p>
+
+                                    <p>Hello</p>
                                 </a></li>
                         </ul>
                     </div>
                     <!-- End Atribute Navigation -->
                 </div>
                 <!-- Start Side Menu -->
-                <div class="side">
-                    <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                    <li class="cart-box">
-                        <ul class="cart-list">
-                            <li>
-                                <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
-                                <h6><a href="#">Delica omtantur </a></h6>
-                                <p>1x - <span class="price">$80.00</span></p>
-                            </li>
-                            <li>
-                                <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
-                                <h6><a href="#">Omnes ocurreret</a></h6>
-                                <p>1x - <span class="price">$60.00</span></p>
-                            </li>
-                            <li>
-                                <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
-                                <h6><a href="#">Agam facilisis</a></h6>
-                                <p>1x - <span class="price">$40.00</span></p>
-                            </li>
-                            <li class="total">
-                                <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                                <span class="float-right"><strong>Total</strong>: $180.00</span>
-                            </li>
-                        </ul>
-                    </li>
-                </div>
+
                 <!-- End Side Menu -->
             </nav>
             <!-- End Navigation -->
@@ -147,7 +129,7 @@
                     <div class="col-xl-5 col-lg-5 col-md-6">
                         <div id="carousel-example-1" class="single-product-slider carousel slide" data-ride="carousel">
                             <div class="carousel-inner" role="listbox">
-                                <c:forEach items="${requestScope.detailD}" var="d">
+                                <c:forEach items="${requestScope.apartmentT}" var="d">
                                     <div class="carousel-item active"> <img class="d-block w-100" src="${d.image1}" alt="First slide"> </div>
                                     <div class="carousel-item"> <img class="d-block w-100" src="${d.image2}" alt="Second slide"> </div>
                                     <div class="carousel-item"> <img class="d-block w-100" src="${d.image3}" alt="Third slide"> </div>
@@ -166,13 +148,13 @@
 
                                 <c:forEach items="${requestScope.detailD}" var="d">
                                     <li data-target="#carousel-example-1" data-slide-to="0" class="active">
-                                        <img class="d-block w-100 img-fluid" src="${d.image1}" alt="" />
+                                        <img class="d-block w-10 img-fluid" src="${d.image1}" alt="" />
                                     </li>
                                     <li data-target="#carousel-example-1" data-slide-to="1">
-                                        <img class="d-block w-100 img-fluid" src="${d.image2}" alt="" />
+                                        <img class="d-block w-10 img-fluid" src="${d.image2}" alt="" />
                                     </li>
                                     <li data-target="#carousel-example-1" data-slide-to="2">
-                                        <img class="d-block w-100 img-fluid" src="${d.image3}" alt="" />
+                                        <img class="d-block w-10 img-fluid" src="${d.image3}" alt="" />
                                     </li>
                                 </c:forEach>
                             </ol>
@@ -182,9 +164,12 @@
                         <div class="col-xl-7 col-lg-7 col-md-6">
                             <div class="single-product-details">
                                 <h2>${ox.apartName}</h2>
-                                <h5>${ox.price}</h5>
+                                <h5>${ox.price} tr</h5>
                                 <p class="available-stock"><span> Room: ${ox.total}/ <a href="#"> ${ox.totalNow} </a></span><p>
+                                <h4>HoseName</h4>
+                                <p>${ox.hoseName}</p>
                                 <h4>Contact phone number</h4>
+                                <p>${ox.phone}</p>
                                 <h4>Short Description:</h4>
                                 <p>${ox.description} </p>
                             </div>
@@ -197,7 +182,7 @@
                 <div class="row my-5">
                     <div class="card card-outline-secondary my-4">
                         <div class="card-header">
-                            <h2>Product Reviews</h2>
+                            <h2>Comment</h2>
                         </div>
                         <div class="card-body">
                             <div class="media mb-3">
@@ -231,9 +216,9 @@
                             </div>
                             <hr>
                             <form action="FeedbackController">
-                                
-                                
-                            <a href="#" class="btn hvr-hover">Send</a>
+
+
+                                <a href="#" class="btn hvr-hover">Send</a>
                             </form>
                         </div>
                     </div>
@@ -242,163 +227,27 @@
                 <div class="row my-5">
                     <div class="col-lg-12">
                         <div class="title-all text-center">
-                            <h1>Featured Products</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
+                            <h1>OTHER HOUSE</h1>
+                            <p>You can see some more houses</p>
                         </div>
-                        <div class="featured-products-box owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="products-single fix">
-                                    <div class="box-img-hover">
-                                        <img src="images/img-pro-01.jpg" class="img-fluid" alt="Image">
-                                        <div class="mask-icon">
-                                            <ul>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                            </ul>
-                                            <a class="cart" href="#">Add to Cart</a>
+                        <c:forEach items="${apartmentT}" var="ac">
+                            <div class="featured-products-box owl-carousel owl-theme">
+
+                                <div class="item">
+                                    <div class="products-single fix">
+                                        <div class="box-img-hover">
+                                            <img src="${ac.image}" class="img-fluid" alt="Image">                                        
                                         </div>
-                                    </div>
-                                    <div class="why-text">
-                                        <h4>Lorem ipsum dolor sit amet</h4>
-                                        <h5> $9.79</h5>
+                                        <div class="why-text">
+                                            <h4>${ac.apartName}</h4>
+
+                                            <h5>${ac.price} Tr</h5>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="item">
-                                <div class="products-single fix">
-                                    <div class="box-img-hover">
-                                        <img src="images/img-pro-02.jpg" class="img-fluid" alt="Image">
-                                        <div class="mask-icon">
-                                            <ul>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                            </ul>
-                                            <a class="cart" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="why-text">
-                                        <h4>Lorem ipsum dolor sit amet</h4>
-                                        <h5> $9.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="products-single fix">
-                                    <div class="box-img-hover">
-                                        <img src="images/img-pro-03.jpg" class="img-fluid" alt="Image">
-                                        <div class="mask-icon">
-                                            <ul>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                            </ul>
-                                            <a class="cart" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="why-text">
-                                        <h4>Lorem ipsum dolor sit amet</h4>
-                                        <h5> $9.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="products-single fix">
-                                    <div class="box-img-hover">
-                                        <img src="images/img-pro-04.jpg" class="img-fluid" alt="Image">
-                                        <div class="mask-icon">
-                                            <ul>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                            </ul>
-                                            <a class="cart" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="why-text">
-                                        <h4>Lorem ipsum dolor sit amet</h4>
-                                        <h5> $9.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="products-single fix">
-                                    <div class="box-img-hover">
-                                        <img src="images/img-pro-01.jpg" class="img-fluid" alt="Image">
-                                        <div class="mask-icon">
-                                            <ul>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                            </ul>
-                                            <a class="cart" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="why-text">
-                                        <h4>Lorem ipsum dolor sit amet</h4>
-                                        <h5> $9.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="products-single fix">
-                                    <div class="box-img-hover">
-                                        <img src="images/img-pro-02.jpg" class="img-fluid" alt="Image">
-                                        <div class="mask-icon">
-                                            <ul>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                            </ul>
-                                            <a class="cart" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="why-text">
-                                        <h4>Lorem ipsum dolor sit amet</h4>
-                                        <h5> $9.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="products-single fix">
-                                    <div class="box-img-hover">
-                                        <img src="images/img-pro-03.jpg" class="img-fluid" alt="Image">
-                                        <div class="mask-icon">
-                                            <ul>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                            </ul>
-                                            <a class="cart" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="why-text">
-                                        <h4>Lorem ipsum dolor sit amet</h4>
-                                        <h5> $9.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="products-single fix">
-                                    <div class="box-img-hover">
-                                        <img src="images/img-pro-04.jpg" class="img-fluid" alt="Image">
-                                        <div class="mask-icon">
-                                            <ul>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                            </ul>
-                                            <a class="cart" href="#">Add to Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="why-text">
-                                        <h4>Lorem ipsum dolor sit amet</h4>
-                                        <h5> $9.79</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </c:forEach>
+
                     </div>
                 </div>
 

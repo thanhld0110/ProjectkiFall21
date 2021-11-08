@@ -10,23 +10,29 @@ package model;
  * @author win
  */
 public class Apartment {
-    private int apartId;
+
+    //11 thuoc tinh
+    private int apartID;
     private String apartName;
-    private double price; 
+    private String hoseName;
+    private String phone;
+    private double price;
     private String address;
     private String description;
-    
     private int total;
-    private double area;
+    private float area;
     private String image;
+    private String image1;
+    private String image2;
+    private String image3;
     private int totalNow;
 
-    public int getApartId() {
-        return apartId;
+    public int getApartID() {
+        return apartID;
     }
 
-    public void setApartId(int apartId) {
-        this.apartId = apartId;
+    public void setApartID(int apartID) {
+        this.apartID = apartID;
     }
 
     public String getApartName() {
@@ -35,6 +41,22 @@ public class Apartment {
 
     public void setApartName(String apartName) {
         this.apartName = apartName;
+    }
+
+    public String getHoseName() {
+        return hoseName;
+    }
+
+    public void setHoseName(String hoseName) {
+        this.hoseName = hoseName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public double getPrice() {
@@ -69,11 +91,11 @@ public class Apartment {
         this.total = total;
     }
 
-    public double getArea() {
+    public float getArea() {
         return area;
     }
 
-    public void setArea(double area) {
+    public void setArea(float area) {
         this.area = area;
     }
 
@@ -83,6 +105,30 @@ public class Apartment {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getImage1() {
+        return image1;
+    }
+
+    public void setImage1(String image1) {
+        this.image1 = image1;
+    }
+
+    public String getImage2() {
+        return image2;
+    }
+
+    public void setImage2(String image2) {
+        this.image2 = image2;
+    }
+
+    public String getImage3() {
+        return image3;
+    }
+
+    public void setImage3(String image3) {
+        this.image3 = image3;
     }
 
     public int getTotalNow() {
@@ -95,11 +141,7 @@ public class Apartment {
 
     @Override
     public String toString() {
-        return "Apartment{" + "apartId=" + apartId + ", apartName=" + apartName + ", price=" + price + ", address=" + address + ", description=" + description + ", total=" + total + ", area=" + area + ", image=" + image + ", totalNow=" + totalNow + '}';
+        return "Apartment{" + "apartID=" + apartID + ", apartName=" + apartName + ", hoseName=" + hoseName + ", phone=" + phone + ", price=" + price + ", address=" + address + ", description=" + description + ", total=" + total + ", area=" + area + ", image=" + image + ", image1=" + image1 + ", image2=" + image2 + ", image3=" + image3 + ", totalNow=" + totalNow + '}';
     }
 
-    
-
-    
-    
 }

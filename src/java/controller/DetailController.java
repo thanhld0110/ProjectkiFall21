@@ -6,7 +6,7 @@
 package controller;
 
 import dal.AppartmentDBContext;
-import dal.DetailDBContext;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Apartment;
-import model.Detail;
+
 
 /**
  *
@@ -63,11 +63,11 @@ public class DetailController extends HttpServlet {
             throws ServletException, IOException {
         int apartID = Integer.parseInt(request.getParameter("apartID"));
         AppartmentDBContext db = new AppartmentDBContext();
-        DetailDBContext db2 = new DetailDBContext();
-        ArrayList<Apartment> apartmentT = db.getAppartmentById(apartID);
-        ArrayList<Detail> detailD = db2.getDetail(apartID);
+        
+        ArrayList<Apartment> apartmentT = db.getAppartmentByID(apartID);
+        
         request.setAttribute("apartmentT", apartmentT);
-        request.setAttribute("detailD", detailD);
+        
         request.getRequestDispatcher("detail.jsp").forward(request, response);
     }
 

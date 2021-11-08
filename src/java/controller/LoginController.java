@@ -78,13 +78,17 @@ public class LoginController extends HttpServlet {
         Account account = db.getAcount(user, pass);
         
         if(account != null){ // login successful
+            
             request.getSession().setAttribute("account", account);
             request.getRequestDispatcher("index.jsp").forward(request, response);
+            
         }
         else{
+            
             request.getSession().setAttribute("account", null);
             response.sendRedirect("login.jsp");
         }
+        
     }
 
     /**

@@ -11,15 +11,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Site Metas -->
-        <title>HolaApartment</title>
+        <title>HolaHouse</title>
         <meta name="keywords" content="">
         <meta name="description" content="">
         <meta name="author" content="">
 
         <!-- Site Icons -->
-        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-
+        <link rel="shortcut icon" href="images/logo2.png" type="image/x-icon">
+        <link rel="apple-touch-icon" href="images/logo2.png">
+    
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <!-- Site CSS -->
@@ -52,7 +52,7 @@
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                             <i class="fa fa-bars"></i>
                         </button>
-                        <a class="navbar-brand" href="index.jsp"><img src="images/logo.png" class="logo" alt=""></a>
+                        <a class="navbar-brand" href="index.jsp"><img src="images/logo2.png" class="logo" alt=""></a>
                     </div>
                     <!-- End Header Navigation -->
 
@@ -65,12 +65,9 @@
                                 <li class="dropdown active">
                                     <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Manage</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="shop.jsp">Manage Account</a></li>
-                                        <li><a href="shop-detail.jsp">Manage Product</a></li>
-                                        <li><a href="cart.jsp">Cart</a></li>
-                                        <li><a href="checkout.jsp">Checkout</a></li>
-                                        <li><a href="my-account.jsp">My Account</a></li>
-                                        <li><a href="wishlist.jsp">Wishlist</a></li>
+                                        <li><a href="manager">Manage Apartment</a></li>
+                                        <li><a href="manageAdmin">Manage Account</a></li>
+                                        
                                     </ul> 
                                 </li>
                             </c:if>
@@ -98,32 +95,7 @@
                     <!-- End Atribute Navigation -->
                 </div>
                 <!-- Start Side Menu -->
-                <div class="side">
-                    <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                    <li class="cart-box">
-                        <ul class="cart-list">
-                            <li>
-                                <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
-                                <h6><a href="#">Delica omtantur </a></h6>
-                                <p>1x - <span class="price">$80.00</span></p>
-                            </li>
-                            <li>
-                                <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
-                                <h6><a href="#">Omnes ocurreret</a></h6>
-                                <p>1x - <span class="price">$60.00</span></p>
-                            </li>
-                            <li>
-                                <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
-                                <h6><a href="#">Agam facilisis</a></h6>
-                                <p>1x - <span class="price">$40.00</span></p>
-                            </li>
-                            <li class="total">
-                                <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                                <span class="float-right"><strong>Total</strong>: $180.00</span>
-                            </li>
-                        </ul>
-                    </li>
-                </div>
+                
                 <!-- End Side Menu -->
             </nav>
             <!-- End Navigation -->
@@ -158,24 +130,15 @@
                                         <span>Sort by </span>
                                         <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
                                             <option data-display="Select">Nothing</option>
-                                            <option value="1">Popularity</option>
-                                            <option value="2">High Price → High Price</option>
-                                            <option value="3">Low Price → High Price</option>
-                                            <option value="4">Best Selling</option>
+                                            <option value="1"></option>
+                                            <option value="2"></option>
+                                            <option value="3"></option>
+                                            <option value="4"></option>
                                         </select>
                                     </div>
-                                    <p>Showing all 4 results</p>
+                                    <p>Showing all 3 results</p>
                                 </div>
-                                <div class="col-12 col-sm-4 text-center text-sm-right">
-                                    <ul class="nav nav-tabs ml-auto">
-                                        <li>
-                                            <a class="nav-link active" href="#grid-view" data-toggle="tab"> <i class="fa fa-th"></i> </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link" href="#list-view" data-toggle="tab"> <i class="fa fa-list-ul"></i> </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                
                             </div>
 
                             <div class="product-categorie-box">
@@ -191,7 +154,7 @@
 
                                                         </div>
                                                         <div class="why-text">
-                                                            <a href="DetailController?apartID=${a.apartId}"><h4>${a.apartName}</h4></a>
+                                                            <a href="DetailController?apartID=${a.apartID}"><h4>${a.apartName}</h4></a>
                                                             <h5> ${a.price}tr</h5>
                                                         </div>
                                                     </div>
@@ -341,18 +304,7 @@
 
                                 </div>
                             </div>
-                            <div class="filter-price-left">
-                                <div class="title-left">
-                                    <h3>Price</h3>
-                                </div>
-                                <div class="price-box-slider">
-                                    <div id="slider-range"></div>
-                                    <p>
-                                        <input type="text" id="amount" readonly style="border:0; color:#fbb714; font-weight:bold;">
-                                        <button class="btn hvr-hover" type="submit">Filter</button>
-                                    </p>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

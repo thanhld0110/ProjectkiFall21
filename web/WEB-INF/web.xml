@@ -32,6 +32,30 @@
         <servlet-name>LogoutController</servlet-name>
         <servlet-class>controller.LogoutController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ManageApartMentController</servlet-name>
+        <servlet-class>controller.ManageApartMentController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsertController</servlet-name>
+        <servlet-class>controller.InsertController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateController</servlet-name>
+        <servlet-class>controller.UpdateController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteController</servlet-name>
+        <servlet-class>controller.DeleteController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageAdmin</servlet-name>
+        <servlet-class>controller.ManageAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InsertAdminController</servlet-name>
+        <servlet-class>controller.InsertAdminController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoadController</servlet-name>
         <url-pattern>/LoadController</url-pattern>
@@ -63,6 +87,30 @@
     <servlet-mapping>
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageApartMentController</servlet-name>
+        <url-pattern>/manager</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertController</servlet-name>
+        <url-pattern>/insert</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateController</servlet-name>
+        <url-pattern>/update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteController</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageAdmin</servlet-name>
+        <url-pattern>/manageAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertAdminController</servlet-name>
+        <url-pattern>/insertAdmin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

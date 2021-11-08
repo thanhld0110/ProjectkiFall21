@@ -8,6 +8,7 @@ package dal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Account;
@@ -17,6 +18,30 @@ import model.Account;
  * @author win
  */
 public class AccountDBContext extends DBContext {
+
+    public ArrayList<Account> getAllAccount() {
+        ArrayList<Account> accounts = new ArrayList<>();
+        try {
+            String sql = "SELECT [id]\n"
+                    + "      ,[username]\n"
+                    + "      ,[password]\n"
+                    + "      ,[host]\n"
+                    + "  FROM [Account]";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Account a = new  Account();
+                a.setId(rs.getInt("id"));
+                a.setUsername(rs.getString("username"));
+                a.setPassword(rs.getString("password"));
+                a.setHost(rs.getBoolean("host"));
+                accounts.add(a);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return accounts;
+    }
 
     public Account getAcount(String username, String password) {
         try {
@@ -34,7 +59,7 @@ public class AccountDBContext extends DBContext {
 //                account.setId(rs.getInt("id"));
                 account.setUsername(username);
                 account.setPassword(password);
-//                account.setHost(rs.getBoolean("host"));
+                account.setHost(rs.getBoolean("host"));
                 return account;
             }
         } catch (SQLException ex) {
@@ -43,27 +68,24 @@ public class AccountDBContext extends DBContext {
         return null;
     }
 
-    public Account addAdmin(String username, String password) {
-        
+    public void insertAdmin(Account account) {
 
         try {
-            String sql = "INSERT INTO [Account]\n"
-                    + "           ([username]\n"
-                    + "           ,[password])\n"
-                    + "     VALUES\n"
-                    + "           (?,?)";
+            String sql = "INSERT INTO [Account] VALUES (?,?,?)";
             PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setString(1, username);
-            stm.setString(2, password);
-             stm.executeUpdate();
+            stm.setString(1, account.getUsername());
+            stm.setString(2, account.getPassword());
+            stm.setBoolean(3, account.getHost());
+            
+            stm.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(AccountDBContext.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
+        }      
     }
 
     public static void main(String[] args) {
         AccountDBContext a = new AccountDBContext();
-        Account ac=a.addAdmin("chungct", "chungct");
+        
+        
     }
 }
